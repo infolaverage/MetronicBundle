@@ -10,8 +10,8 @@
     "minimum-stability": "stable",
     "require": {},
     "autoload": {
-        "psr-0" : {
-            "Infolaverage\\MetronicBundle" : ""
+        "psr-4" : {
+            "InfoLaverage\\MetronicBundle" : ""
         }
     },
     "target-dir" : "MetronicBundle",
