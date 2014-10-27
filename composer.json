@@ -14,6 +14,5 @@
             "InfoLaverage\\MetronicBundle" : ""
         }
     },
-    "target-dir" : "MetronicBundle",
     "repositories" : [{}]
 }
