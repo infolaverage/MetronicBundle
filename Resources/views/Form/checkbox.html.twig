@@ -1,0 +1,34 @@
+{% block choice_widget -%}
+    {% spaceless %}
+        {% if expanded %}
+            {%- for child in form %}
+                {{- form_widget(child) -}}
+            {% endfor -%}
+        {% else %}
+            {{- block('choice_widget_collapsed') -}}
+        {% endif %}
+    {% endspaceless %}
+{%- endblock choice_widget %}
+
+{% block checkbox_widget %}
+    {% spaceless %}
+        <label for="{{ id }}">
+            <input
+                type="checkbox"
+                {{ block('widget_attributes') }}
+                {% if value is defined %} value="{{ value }}"{% endif %}
+                {% if checked %} checked="checked"{% endif %}
+            />
+            {{ label|trans }}
+        </label>
+    {% endspaceless %}
+{% endblock checkbox_widget %}
+
+{% block radio_widget %}
+    {% spaceless %}
+        <label  for="{{ id }}">
+            <input type="radio" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+            {{ label|trans }}
+        </label>
+    {% endspaceless %}
+{% endblock radio_widget %}
