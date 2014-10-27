@@ -1,0 +1,26 @@
+{
+    "name": "infolaverage/metronic-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony MetronicBundle",
+    "keywords": ["admin template-system"],
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "infolaverage/metronic-bundle",
+                "version": "dev-master",
+                "source": {
+                    "url": "git://github.com/infolaverage/MetronicBundle.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "infolaverage\\MetronicBundle\\": ""
+                    }
+                }
+            }
+        }
+    ]
+}
