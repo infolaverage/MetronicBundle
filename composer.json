@@ -8,5 +8,24 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {}
+    "require": {},
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "infolaverage/MetronicBundle",
+                "version": "dev-master",
+                "source": {
+                    "url": "git://github.com/infolaverage/MetronicBundle.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "psr-0" : {
+                        "Infolaverage\\MetronicBundle" : ""
+                    }
+                }
+            }
+        }
+    ]
 }
