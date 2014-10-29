@@ -1,6 +1,11 @@
 {
     "name": "infolaverage/metronic-bundle",
     "description": "Admin template system by Metronic",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
     "authors": [
         {
             "name": "OttlikG",
@@ -8,11 +13,9 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
     "autoload": {
         "psr-4" : {
             "InfoLaverage\\MetronicBundle\\" : ""
         }
-    },
-    "repositories" : [{}]
+    }
 }
