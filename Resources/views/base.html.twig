@@ -114,7 +114,7 @@
 {% endblock %}
 {# END CORE PLUGINS #}
 {# BEGIN PAGE LEVEL PLUGINS #}
-{% block page_level_plugins %}{% endblock %}
+{% block page_level_plugin_scripts %}{% endblock %}
 {# END PAGE LEVEL PLUGINS #}
 {# BEGIN PAGE LEVEL SCRIPTS #}
 {% block page_level_scripts %}
@@ -131,8 +131,8 @@
         QuickSidebar.init(); // init quick sidebar
     });
 </script>
-{% endblock %}
-{% endblock %}
+{% endblock javascript_initialize %}
+{% endblock javascripts %}
 {# END JAVASCRIPTS #}
 </body>
 {# END BODY #}
