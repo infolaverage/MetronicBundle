@@ -19,14 +19,14 @@
 
     {% block stylesheets %}
     {# BEGIN GLOBAL MANDATORY STYLES #}
-    {% stylesheets
+    {% stylesheets filter='cssrewrite'
         "bundles/infolaveragemetronic/core/css/font-awesome.min.css"
         "bundles/infolaveragemetronic/core/css/simple-line-icons.min.css"
         "bundles/infolaveragemetronic/core/css/bootstrap.min.css"
         "bundles/infolaveragemetronic/core/css/uniform.default.min.css"
         "bundles/infolaveragemetronic/core/css/bootstrap-switch.min.css"
 
-        output='css/compiled/metronic.css'
+        output='bundles/infolaveragemetronic/compiled/main.css'
     %}
         <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -38,19 +38,20 @@
 
     {# END PAGE STYLES #}
     {# BEGIN THEME STYLES #}
-    {% stylesheets
+    {% stylesheets filter='cssrewrite'
         "bundles/infolaveragemetronic/core/css/components.css"
         "bundles/infolaveragemetronic/core/css/plugins.css"
         "bundles/infolaveragemetronic/core/css/layout.css"
         "bundles/infolaveragemetronic/core/css/light.css"
         "bundles/infolaveragemetronic/core/css/custom.css"
 
-        output='css/compiled/main.css'
+        output='bundles/infolaveragemetronic/compiled/main.css'
     %}
         <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
     {% endstylesheets %}
     {# END THEME STYLES #}
     {% endblock stylesheets %}
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="{{ asset('bundles/infolaveragemetronic/core/images/favicon.ico') }}"/>
 </head>
 {# END HEAD #}
@@ -130,7 +131,7 @@
     'bundles/infolaveragemetronic/core/js/jquery.uniform.min.js'
     'bundles/infolaveragemetronic/core/js/bootstrap-switch.min.js'
 
-    output='js/compiled/main.js'
+    output='bundles/infolaveragemetronic/compiled/main.js'
 %}
     <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
@@ -146,7 +147,7 @@
     'bundles/infolaveragemetronic/core/js/layout.js'
     'bundles/infolaveragemetronic/core/js/quick-sidebar.js'
 
-    output='js/compiled/main.js'
+    output='bundles/infolaveragemetronic/compiled/main.js'
 %}
     <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
