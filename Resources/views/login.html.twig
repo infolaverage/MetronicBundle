@@ -496,9 +496,22 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     };
+</script>
 
     {% for flashMessage in app.session.flashbag.get('notice') %}
-        toastr.info('{{ flashMessage }}');
+        <script>
+            toastr.info('{{ flashMessage }}');
+        </script>
     {% endfor %}
-</script>
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <script>
+            toastr.success('{{ flashMessage }}');
+        </script>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('warning') %}
+        <script>
+            toastr.warning('{{ flashMessage }}');
+        </script>
+    {% endfor %}
+
 {% endblock %}
