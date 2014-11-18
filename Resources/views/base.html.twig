@@ -10,31 +10,27 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         {% block stylesheets %}
-            {% stylesheets filter='cssrewrite' output='css/main.css'
-                "bundles/infolaveragemetronic/core/css/font-awesome.min.css"
-                "bundles/infolaveragemetronic/core/css/simple-line-icons.min.css"
-                "bundles/infolaveragemetronic/core/css/bootstrap.min.css"
-                "bundles/infolaveragemetronic/core/css/uniform.default.min.css"
-                "bundles/infolaveragemetronic/core/css/bootstrap-switch.min.css"
-                "bundles/infolaveragemetronic/core/css/toastr.min.css"
+            {% stylesheets filter='cssrewrite' output='css/ilmb_a.css'
+                'bundles/infolaveragemetronic/core/css/font-awesome.min.css'
+                'bundles/infolaveragemetronic/core/css/simple-line-icons.min.css'
+                'bundles/infolaveragemetronic/core/css/bootstrap.min.css'
+                'bundles/infolaveragemetronic/core/css/uniform.default.min.css'
+                'bundles/infolaveragemetronic/core/css/bootstrap-switch.min.css'
+                'bundles/infolaveragemetronic/core/css/toastr.min.css'
+                'bundles/infolaveragemetronic/core/css/components.css'
+                'bundles/infolaveragemetronic/core/css/plugins.css'
+                'bundles/infolaveragemetronic/core/css/layout.css'
+                'bundles/infolaveragemetronic/core/css/light.css'
+                'bundles/infolaveragemetronic/core/css/custom.css'
             %}
                 <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
             {% endstylesheets %}
-            {% block page_level_plugin_styles %}{% endblock %}
-            {% stylesheets filter='cssrewrite' output='css/main.css'
-                "bundles/infolaveragemetronic/core/css/components.css"
-                "bundles/infolaveragemetronic/core/css/plugins.css"
-                "bundles/infolaveragemetronic/core/css/layout.css"
-                "bundles/infolaveragemetronic/core/css/light.css"
-                "bundles/infolaveragemetronic/core/css/custom.css"
-            %}
-                <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
-            {% endstylesheets %}
+            {% block additional_stylesheets %}{% endblock %}
         {% endblock stylesheets %}
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
         <link rel="shortcut icon" href="{{ asset('bundles/infolaveragemetronic/core/images/favicon.ico') }}"/>
     </head>
-    <body class="{% block body_class %}page-header-fixed page-quick-sidebar-over-content {{ additional_body_class|default(null) }}{% endblock body_class %}">
+    <body class="{% block body_class %}{{ additional_body_class|default(null) }} page-header-fixed page-quick-sidebar-over-content{% endblock body_class %}">
         {% block body %}
             {% include "InfoLaverageMetronicBundle:partials:header.html.twig" %}
             <div class="page-container">
@@ -46,14 +42,14 @@
         {% block javascripts %}
             {% block core_plugins %}
                 <!--[if lt IE 9]>
-                {% javascripts output='js/main.js'
+                {% javascripts output='js/ilmb_a.js'
                     'bundles/infolaveragemetronic/core/js/respond.min.js'
                     'bundles/infolaveragemetronic/core/js/excanvas.min.js'
                 %}
                     <script src="{{ asset_url }}"></script>
                 {% endjavascripts %}
                 <![endif]-->
-                {% javascripts output='js/main.js'
+                {% javascripts output='js/ilmb_b.js'
                     'bundles/infolaveragemetronic/core/js/jquery-1.11.0.min.js'
                     'bundles/infolaveragemetronic/core/js/jquery-migrate-1.2.1.min.js'
                     'bundles/infolaveragemetronic/core/js/jquery-ui-1.10.3.custom.min.js'
@@ -64,20 +60,21 @@
                     'bundles/infolaveragemetronic/core/js/jquery.cokie.min.js'
                     'bundles/infolaveragemetronic/core/js/jquery.uniform.min.js'
                     'bundles/infolaveragemetronic/core/js/bootstrap-switch.min.js'
+                    'bundles/infolaveragemetronic/core/js/toastr.min.js'
                 %}
                     <script src="{{ asset_url }}"></script>
                 {% endjavascripts %}
-            {% endblock %}
+            {% endblock core_plugins %}
             {% block page_level_plugin_scripts %}{% endblock %}
             {% block page_level_scripts %}
-                {% javascripts output='js/main.js'
+                {% javascripts output='js/ilmb_c.js'
                     'bundles/infolaveragemetronic/core/js/metronic.js'
                     'bundles/infolaveragemetronic/core/js/layout.js'
                     'bundles/infolaveragemetronic/core/js/quick-sidebar.js'
                 %}
                     <script src="{{ asset_url }}"></script>
                 {% endjavascripts %}
-            {% endblock %}
+            {% endblock page_level_scripts %}
             {% block javascript_initialize %}
                 <script>
                     jQuery(document).ready(function() {
