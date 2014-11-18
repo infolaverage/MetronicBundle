@@ -1,13 +1,11 @@
 {% extends "InfoLaverageMetronicBundle::base.html.twig" %}
 
-{% set body_class = 'login' %}
-
-{% block main_title %}Login{% endblock %}
+{% set meta_title = 'Login' %}
+{% set additional_body_class = 'login' %}
 
 {% block page_level_plugin_styles %}
     <link href="{{ asset('bundles/infolaveragemetronic/login/css/select2.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('bundles/infolaveragemetronic/login/css/login-soft.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('bundles/infolaveragemetronic/core/css/toastr.min.css') }}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block body %}

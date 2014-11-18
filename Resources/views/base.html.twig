@@ -4,166 +4,89 @@
 <!--[if !IE]><!-->
 <html lang="en" class="no-js">
 <!--<![endif]-->
-{# BEGIN HEAD #}
-<head>
-    <meta charset="utf-8"/>
-    <title>
-        {% block title %}
-            {% block main_title %}Metronic{% endblock %} | {% block second_title %}Admin Dashboard Template{% endblock %}
-        {% endblock %}
-    </title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="" name="description"/>
-    <meta content="" name="author"/>
-
-    {% block stylesheets %}
-    {# BEGIN GLOBAL MANDATORY STYLES #}
-    {% stylesheets filter='cssrewrite'
-        "bundles/infolaveragemetronic/core/css/font-awesome.min.css"
-        "bundles/infolaveragemetronic/core/css/simple-line-icons.min.css"
-        "bundles/infolaveragemetronic/core/css/bootstrap.min.css"
-        "bundles/infolaveragemetronic/core/css/uniform.default.min.css"
-        "bundles/infolaveragemetronic/core/css/bootstrap-switch.min.css"
-
-        output='css/main.css'
-    %}
-        <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
-    {% endstylesheets %}
-    {# END GLOBAL MANDATORY STYLES #}
-    {# BEGIN PAGE LEVEL PLUGIN STYLES #}
-    {% block page_level_plugin_styles %}{% endblock %}
-    {# END PAGE LEVEL PLUGIN STYLES #}
-    {# BEGIN PAGE STYLES #}
-
-    {# END PAGE STYLES #}
-    {# BEGIN THEME STYLES #}
-    {% stylesheets filter='cssrewrite'
-        "bundles/infolaveragemetronic/core/css/components.css"
-        "bundles/infolaveragemetronic/core/css/plugins.css"
-        "bundles/infolaveragemetronic/core/css/layout.css"
-        "bundles/infolaveragemetronic/core/css/light.css"
-        "bundles/infolaveragemetronic/core/css/custom.css"
-
-        output='css/main.css'
-    %}
-        <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
-    {% endstylesheets %}
-    {# END THEME STYLES #}
-    {% endblock stylesheets %}
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
-    <link rel="shortcut icon" href="{{ asset('bundles/infolaveragemetronic/core/images/favicon.ico') }}"/>
-</head>
-{# END HEAD #}
-{# BEGIN BODY #}
-{# DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices #}
-{# DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default #}
-{# DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle #}
-{# DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle #}
-{# DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle #}
-{# DOC: Apply "page-sidebar-fixed" class to have fixed sidebar #}
-{# DOC: Apply "page-footer-fixed" class to the body element to have fixed footer #}
-{# DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side #}
-{# DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu #}
-{% if body_class is defined %}
-    <body class="{{ body_class }}">
-{% else %}
-    <body class="page-header-fixed page-quick-sidebar-over-content">
-{% endif %}
-{% block body %}
-{# BEGIN HEADER #}
-    {% block header_metronic %}
-        {% include "InfoLaverageMetronicBundle::header.html.twig" %}
-    {% endblock %}
-{# END HEADER #}
-<div class="clearfix">
-</div>
-{# BEGIN CONTAINER #}
-<div class="page-container">
-    {# BEGIN SIDEBAR #}
-        {% block sidebar_metronic %}
-            {% include "InfoLaverageMetronicBundle::sidebar.html.twig" %}
-        {% endblock %}
-    {# END SIDEBAR #}
-    {# BEGIN CONTENT #}
-        {% block content_metronic %}
-            {% include "InfoLaverageMetronicBundle::content.html.twig" %}
-        {% endblock %}
-    {# END CONTENT #}
-    {# BEGIN QUICK SIDEBAR #}
-    <a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
-    {% block quick_sidebar_metronic %}
-        {#{% include "InfoLaverageMetronicBundle::quick_sidebar.html.twig" %}#}
-    {% endblock %}
-    {# END QUICK SIDEBAR #}
-</div>
-{# END CONTAINER #}
-{# BEGIN FOOTER #}
-{% block footer_metronic %}
-    {% include "InfoLaverageMetronicBundle::footer.html.twig" %}
-{% endblock %}
-{# END FOOTER #}
-{% endblock body %}
-{# BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) #}
-{% block javascripts %}
-{# BEGIN CORE PLUGINS #}
-{% block core_plugins %}
-<!--[if lt IE 9]>
-{% javascripts
-    'bundles/infolaveragemetronic/core/js/respond.min.js'
-    'bundles/infolaveragemetronic/core/js/excanvas.min.js'
-
-    output='js/main.js'
-%}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-<![endif]-->
-{# IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip #}
-{% javascripts
-    'bundles/infolaveragemetronic/core/js/jquery-1.11.0.min.js'
-    'bundles/infolaveragemetronic/core/js/jquery-migrate-1.2.1.min.js'
-    'bundles/infolaveragemetronic/core/js/jquery-ui-1.10.3.custom.min.js'
-    'bundles/infolaveragemetronic/core/js/bootstrap.min.js'
-    'bundles/infolaveragemetronic/core/js/bootstrap-hover-dropdown.min.js'
-    'bundles/infolaveragemetronic/core/js/jquery.slimscroll.min.js'
-    'bundles/infolaveragemetronic/core/js/jquery.blockui.min.js'
-    'bundles/infolaveragemetronic/core/js/jquery.cokie.min.js'
-    'bundles/infolaveragemetronic/core/js/jquery.uniform.min.js'
-    'bundles/infolaveragemetronic/core/js/bootstrap-switch.min.js'
-
-    output='js/main.js'
-%}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-{% endblock %}
-{# END CORE PLUGINS #}
-{# BEGIN PAGE LEVEL PLUGINS #}
-{% block page_level_plugin_scripts %}{% endblock %}
-{# END PAGE LEVEL PLUGINS #}
-{# BEGIN PAGE LEVEL SCRIPTS #}
-{% block page_level_scripts %}
-{% javascripts
-    'bundles/infolaveragemetronic/core/js/metronic.js'
-    'bundles/infolaveragemetronic/core/js/layout.js'
-    'bundles/infolaveragemetronic/core/js/quick-sidebar.js'
-
-    output='js/main.js'
-%}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-{% endblock %}
-{# END PAGE LEVEL SCRIPTS #}
-{% block javascript_initialize %}
-<script>
-    jQuery(document).ready(function() {
-        Metronic.init(); // init metronic core componets
-        Layout.init(); // init layout
-        QuickSidebar.init(); // init quick sidebar
-    });
-</script>
-{% endblock javascript_initialize %}
-{% endblock javascripts %}
-{# END JAVASCRIPTS #}
-</body>
-{# END BODY #}
+    <head>
+        <meta charset="utf-8"/>
+        <title>{{ meta_title|default('Admin') }}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        {% block stylesheets %}
+            {% stylesheets filter='cssrewrite' output='css/main.css'
+                "bundles/infolaveragemetronic/core/css/font-awesome.min.css"
+                "bundles/infolaveragemetronic/core/css/simple-line-icons.min.css"
+                "bundles/infolaveragemetronic/core/css/bootstrap.min.css"
+                "bundles/infolaveragemetronic/core/css/uniform.default.min.css"
+                "bundles/infolaveragemetronic/core/css/bootstrap-switch.min.css"
+                "bundles/infolaveragemetronic/core/css/toastr.min.css"
+            %}
+                <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+            {% endstylesheets %}
+            {% block page_level_plugin_styles %}{% endblock %}
+            {% stylesheets filter='cssrewrite' output='css/main.css'
+                "bundles/infolaveragemetronic/core/css/components.css"
+                "bundles/infolaveragemetronic/core/css/plugins.css"
+                "bundles/infolaveragemetronic/core/css/layout.css"
+                "bundles/infolaveragemetronic/core/css/light.css"
+                "bundles/infolaveragemetronic/core/css/custom.css"
+            %}
+                <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock stylesheets %}
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="{{ asset('bundles/infolaveragemetronic/core/images/favicon.ico') }}"/>
+    </head>
+    <body class="{% block body_class %}page-header-fixed page-quick-sidebar-over-content {{ additional_body_class|default(null) }}{% endblock body_class %}">
+        {% block body %}
+            {% include "InfoLaverageMetronicBundle:partials:header.html.twig" %}
+            <div class="page-container">
+                {% include "InfoLaverageMetronicBundle:partials:sidebar.html.twig" %}
+                {% include "InfoLaverageMetronicBundle:partials:content.html.twig" %}
+            </div>
+            {% include "InfoLaverageMetronicBundle:partials:footer.html.twig" %}
+        {% endblock body %}
+        {% block javascripts %}
+            {% block core_plugins %}
+                <!--[if lt IE 9]>
+                {% javascripts output='js/main.js'
+                    'bundles/infolaveragemetronic/core/js/respond.min.js'
+                    'bundles/infolaveragemetronic/core/js/excanvas.min.js'
+                %}
+                    <script src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+                <![endif]-->
+                {% javascripts output='js/main.js'
+                    'bundles/infolaveragemetronic/core/js/jquery-1.11.0.min.js'
+                    'bundles/infolaveragemetronic/core/js/jquery-migrate-1.2.1.min.js'
+                    'bundles/infolaveragemetronic/core/js/jquery-ui-1.10.3.custom.min.js'
+                    'bundles/infolaveragemetronic/core/js/bootstrap.min.js'
+                    'bundles/infolaveragemetronic/core/js/bootstrap-hover-dropdown.min.js'
+                    'bundles/infolaveragemetronic/core/js/jquery.slimscroll.min.js'
+                    'bundles/infolaveragemetronic/core/js/jquery.blockui.min.js'
+                    'bundles/infolaveragemetronic/core/js/jquery.cokie.min.js'
+                    'bundles/infolaveragemetronic/core/js/jquery.uniform.min.js'
+                    'bundles/infolaveragemetronic/core/js/bootstrap-switch.min.js'
+                %}
+                    <script src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+            {% endblock %}
+            {% block page_level_plugin_scripts %}{% endblock %}
+            {% block page_level_scripts %}
+                {% javascripts output='js/main.js'
+                    'bundles/infolaveragemetronic/core/js/metronic.js'
+                    'bundles/infolaveragemetronic/core/js/layout.js'
+                    'bundles/infolaveragemetronic/core/js/quick-sidebar.js'
+                %}
+                    <script src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+            {% endblock %}
+            {% block javascript_initialize %}
+                <script>
+                    jQuery(document).ready(function() {
+                        Metronic.init(); // init metronic core componets
+                        Layout.init(); // init layout
+                        QuickSidebar.init(); // init quick sidebar
+                    });
+                </script>
+            {% endblock javascript_initialize %}
+        {% endblock javascripts %}
+    </body>
 </html>
