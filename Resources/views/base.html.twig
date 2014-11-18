@@ -32,58 +32,81 @@
     </head>
     <body class="{% block body_class %}{{ additional_body_class|default(null) }} page-header-fixed page-quick-sidebar-over-content{% endblock body_class %}">
         {% block body %}
-            {% include "InfoLaverageMetronicBundle:partials:header.html.twig" %}
+            {% block header_metronic %}
+                {% include 'InfoLaverageMetronicBundle:partials:header.html.twig' %}
+            {% endblock header_metronic %}
             <div class="page-container">
-                {% include "InfoLaverageMetronicBundle:partials:sidebar.html.twig" %}
-                {% include "InfoLaverageMetronicBundle:partials:content.html.twig" %}
+                {% block sidebar_metronic %}
+                    {% include 'InfoLaverageMetronicBundle:partials:sidebar.html.twig' %}
+                {% endblock sidebar_metronic %}
+                {% block content_metronic %}
+                    {% include 'InfoLaverageMetronicBundle:partials:content.html.twig' %}
+                {% endblock content_metronic %}
             </div>
-            {% include "InfoLaverageMetronicBundle:partials:footer.html.twig" %}
+            {% block footer_metronic %}
+                {% include 'InfoLaverageMetronicBundle:partials:footer.html.twig' %}
+            {% endblock footer_metronic %}
         {% endblock body %}
         {% block javascripts %}
-            {% block core_plugins %}
-                <!--[if lt IE 9]>
-                {% javascripts output='js/ilmb_a.js'
-                    'bundles/infolaveragemetronic/core/js/respond.min.js'
-                    'bundles/infolaveragemetronic/core/js/excanvas.min.js'
-                %}
-                    <script src="{{ asset_url }}"></script>
-                {% endjavascripts %}
-                <![endif]-->
-                {% javascripts output='js/ilmb_b.js'
-                    'bundles/infolaveragemetronic/core/js/jquery-1.11.0.min.js'
-                    'bundles/infolaveragemetronic/core/js/jquery-migrate-1.2.1.min.js'
-                    'bundles/infolaveragemetronic/core/js/jquery-ui-1.10.3.custom.min.js'
-                    'bundles/infolaveragemetronic/core/js/bootstrap.min.js'
-                    'bundles/infolaveragemetronic/core/js/bootstrap-hover-dropdown.min.js'
-                    'bundles/infolaveragemetronic/core/js/jquery.slimscroll.min.js'
-                    'bundles/infolaveragemetronic/core/js/jquery.blockui.min.js'
-                    'bundles/infolaveragemetronic/core/js/jquery.cokie.min.js'
-                    'bundles/infolaveragemetronic/core/js/jquery.uniform.min.js'
-                    'bundles/infolaveragemetronic/core/js/bootstrap-switch.min.js'
-                    'bundles/infolaveragemetronic/core/js/toastr.min.js'
-                %}
-                    <script src="{{ asset_url }}"></script>
-                {% endjavascripts %}
-            {% endblock core_plugins %}
-            {% block page_level_plugin_scripts %}{% endblock %}
-            {% block page_level_scripts %}
-                {% javascripts output='js/ilmb_c.js'
-                    'bundles/infolaveragemetronic/core/js/metronic.js'
-                    'bundles/infolaveragemetronic/core/js/layout.js'
-                    'bundles/infolaveragemetronic/core/js/quick-sidebar.js'
-                %}
-                    <script src="{{ asset_url }}"></script>
-                {% endjavascripts %}
-            {% endblock page_level_scripts %}
-            {% block javascript_initialize %}
-                <script>
-                    jQuery(document).ready(function() {
-                        Metronic.init(); // init metronic core componets
-                        Layout.init(); // init layout
-                        QuickSidebar.init(); // init quick sidebar
-                    });
-                </script>
-            {% endblock javascript_initialize %}
+            <!--[if lt IE 9]>
+            {% javascripts output='js/ilmb_iefix.js'
+                'bundles/infolaveragemetronic/core/js/respond.min.js'
+                'bundles/infolaveragemetronic/core/js/excanvas.min.js'
+            %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            <![endif]-->
+            {% javascripts output='js/ilmb_a.js'
+                'bundles/infolaveragemetronic/core/js/jquery-1.11.0.min.js'
+                'bundles/infolaveragemetronic/core/js/jquery-migrate-1.2.1.min.js'
+                'bundles/infolaveragemetronic/core/js/jquery-ui-1.10.3.custom.min.js'
+                'bundles/infolaveragemetronic/core/js/bootstrap.min.js'
+                'bundles/infolaveragemetronic/core/js/bootstrap-hover-dropdown.min.js'
+                'bundles/infolaveragemetronic/core/js/jquery.slimscroll.min.js'
+                'bundles/infolaveragemetronic/core/js/jquery.blockui.min.js'
+                'bundles/infolaveragemetronic/core/js/jquery.cokie.min.js'
+                'bundles/infolaveragemetronic/core/js/jquery.uniform.min.js'
+                'bundles/infolaveragemetronic/core/js/bootstrap-switch.min.js'
+                'bundles/infolaveragemetronic/core/js/metronic.js'
+                'bundles/infolaveragemetronic/core/js/layout.js'
+            %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            <script src="{{ asset('bundles/infolaveragemetronic/core/js/toastr.min.js') }}"></script>
+            {# @todo (csanyig) nem itt van a helye #}
+            <script>
+                $(function()
+                {
+                    Metronic.init(); // init metronic core componets
+                    Layout.init(); // init layout
+                });
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "positionClass": "toast-top-center",
+                    "onclick": null,
+                    "showDuration": "1000",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+
+                {% for flashMessage in app.session.flashbag.get('notice') %}
+                    toastr.info('{{ flashMessage }}');
+                {% endfor %}
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    toastr.success('{{ flashMessage }}');
+                {% endfor %}
+                {% for flashMessage in app.session.flashbag.get('warning') %}
+                    toastr.warning('{{ flashMessage }}');
+                {% endfor %}
+            </script>
+            {% block additional_javascripts %}{% endblock %}
         {% endblock javascripts %}
     </body>
 </html>
