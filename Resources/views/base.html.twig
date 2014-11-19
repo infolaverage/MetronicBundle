@@ -32,20 +32,20 @@
     </head>
     <body class="{% block body_class %}{{ additional_body_class|default(null) }} page-header-fixed page-quick-sidebar-over-content{% endblock body_class %}">
         {% block body %}
-            {% block header_metronic %}
+            {% block page_header %}
                 {% include 'InfoLaverageMetronicBundle:partials:header.html.twig' %}
-            {% endblock header_metronic %}
+            {% endblock page_header %}
             <div class="page-container">
-                {% block sidebar_metronic %}
+                {% block page_sidebar %}
                     {% include 'InfoLaverageMetronicBundle:partials:sidebar.html.twig' %}
-                {% endblock sidebar_metronic %}
-                {% block content_metronic %}
+                {% endblock page_sidebar %}
+                {% block content %}
                     {% include 'InfoLaverageMetronicBundle:partials:content.html.twig' %}
-                {% endblock content_metronic %}
+                {% endblock content %}
             </div>
-            {% block footer_metronic %}
+            {% block page_footer %}
                 {% include 'InfoLaverageMetronicBundle:partials:footer.html.twig' %}
-            {% endblock footer_metronic %}
+            {% endblock page_footer %}
         {% endblock body %}
         {% block javascripts %}
             <!--[if lt IE 9]>
