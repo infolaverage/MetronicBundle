@@ -1,0 +1,10 @@
+parameters:
+    infolaverage.metronic.twig.form_theming_extension.theme_resource: 'InfoLaverageMetronicBundle:Form:fields.html.twig'
+
+services:
+    infolaverage.metronic.twig.form_theming_extension:
+        class: InfoLaverage\MetronicBundle\Twig\FormThemingExtension
+        arguments:
+            - %infolaverage.metronic.twig.form_theming_extension.theme_resource%
+        tags:
+                    - { name: twig.extension }
