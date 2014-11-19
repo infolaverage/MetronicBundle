@@ -1,0 +1,171 @@
+{% block role_widget %}
+    {% spaceless %}
+        {% if expanded %}
+            <ul {{ block('widget_container_attributes') }}>
+                {% for child in form %}
+                    <li>
+                        {{ form_widget(child) }}
+                        {{ form_label(child) }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            {{ block('choice_widget') }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block choice_widget_expanded -%}
+    <div {{ block('widget_container_attributes') }}>
+        {%- for child in form %}
+            {{- form_widget(child) -}}
+            {{- form_label(child) -}}
+        {% endfor -%}
+    </div>
+{% endblock choice_widget_expanded %}
+
+{% block form_start -%}
+    {% set method = method|upper %}
+    {%- if method in ["GET", "POST"] -%}
+        {% set form_method = method %}
+    {%- else -%}
+        {% set form_method = "POST" %}
+    {%- endif -%}
+    <form name="{{ form.vars.name }}" method="{{ form_method|lower }}" action="{{ action }}"
+    {%- if attr is not empty %}
+        {% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}
+    {%- else %} class="form-horizontal"{% endif %}
+    {%- if multipart %} enctype="multipart/form-data"{% endif %}>
+    {%- if form_method != method -%}
+        <input type="hidden" name="_method" value="{{ method }}" />
+    {%- endif -%}
+{%- endblock form_start %}
+
+{% block form_row -%}
+    <div class="form-group">
+        {{ form_label(form) }}
+        <div class="col-md-8">
+            {{ form_widget(form) }}
+            <span class="help-block">
+                {{ form_errors(form) }}
+            </span>
+        </div>
+    </div>
+{%- endblock form_row %}
+
+{% block form_label -%}
+    {% if label is not sameas(false) -%}
+        {% if not compound -%}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {%- endif %}
+        {% if label is empty -%}
+            {% set label = name|humanize %}
+        {%- endif -%}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor -%}
+        {% if 'class' not in label_attr|keys %} class="col-md-4 control-label" {% endif -%}
+        >{{ label|trans({}, translation_domain) }}</label>
+    {%- endif %}
+{%- endblock form_label %}
+
+{% block widget_attributes -%}
+    id="{{ id }}" name="{{ full_name }}"
+    {%- if read_only %} readonly="readonly"{% endif -%}
+    {%- if disabled %} disabled="disabled"{% endif -%}
+    {%- if required %} required="required"{% endif -%}
+    {%- if 'class' not in attr|keys %}class="form-control" {%- endif -%}
+    {%- for attrname, attrvalue in attr -%}
+        {{- " " -}}
+        {%- if attrname in ['placeholder', 'title'] -%}
+            {{- attrname }}="{{ attrvalue|trans({}, translation_domain) }}"
+        {%- elseif attrvalue is sameas(true) -%}
+            {{- attrname }}="{{ attrname }}"
+        {%- elseif attrvalue is not sameas(false) -%}
+            {{- attrname }}="{{ attrvalue }}"
+        {%- endif -%}
+    {%- endfor -%}
+{%- endblock widget_attributes %}
+
+{% block form_widget_simple -%}
+    {% set type = type|default('text') -%}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{%- endblock form_widget_simple %}
+
+{% block submit_widget -%}
+    {% set type = type|default('submit') %}
+    {% if 'login' not in full_name %}
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                    {{- block('button_widget') -}}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        {{- block('button_widget') -}}
+    {% endif %}
+{%- endblock submit_widget %}
+
+{% block button_widget -%}
+    {% if label is empty -%}
+        {% set label = name|humanize %}
+    {%- endif -%}
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>{{ label|trans({}, translation_domain) }}</button>
+{%- endblock button_widget %}
+
+{% block button_attributes -%}
+    id="{{ id }}" name="{{ full_name }}"{% if disabled %} disabled="disabled"{% endif -%}
+    {%- if 'class' not in attr|keys -%}
+        {% if 'delete' in full_name %}class="btn color-delete"{% else %}class="btn green"{% endif %}
+    {%- endif -%}
+    {%- for attrname, attrvalue in attr -%}
+        {{- " " -}}
+        {%- if attrname in ['placeholder', 'title'] -%}
+            {{- attrname }}="{{ attrvalue|trans({}, translation_domain) }}"
+        {%- elseif attrvalue is sameas(true) -%}
+            {{- attrname }}="{{ attrname }}"
+        {%- elseif attrvalue is not sameas(false) -%}
+            {{- attrname }}="{{ attrvalue }}"
+        {%- endif -%}
+    {%- endfor -%}
+{%- endblock button_attributes %}
+
+{% block form -%}
+    {{ form_start(form) }}
+    <div class="form-body">
+        {{- form_widget(form) -}}
+    </div>
+    {{ form_end(form) }}
+{%- endblock form %}
+
+{% block choice_widget -%}
+    {% if expanded %}
+        <div class="checkbox-list">
+            {%- for child in form %}
+                {{- form_widget(child) -}}
+            {% endfor -%}
+        </div>
+    {% else %}
+        {{- block('choice_widget_collapsed') -}}
+    {% endif %}
+{%- endblock choice_widget %}
+
+{% block checkbox_widget %}
+    <label for="{{ id }}">
+        <input
+            type="checkbox"
+            {{ block('widget_attributes') }}
+            {% if value is defined %} value="{{ value }}"{% endif %}
+            {% if checked %} checked="checked"{% endif %}
+        />
+        {{ label|trans }}
+    </label>
+{% endblock checkbox_widget %}
+
+{% block radio_widget %}
+    {% spaceless %}
+        <label  for="{{ id }}">
+            <input type="radio" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+            {{ label|trans }}
+        </label>
+    {% endspaceless %}
+{% endblock radio_widget %}
