@@ -10,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         {% block stylesheets %}
-            {% stylesheets filter='cssrewrite' output='css/ilmb_a.css'
+            {% stylesheets filter='cssrewrite' output='css/compiled/ilmb_a.css'
                 'bundles/infolaveragemetronic/core/css/font-awesome.min.css'
                 'bundles/infolaveragemetronic/core/css/simple-line-icons.min.css'
                 'bundles/infolaveragemetronic/core/css/bootstrap.min.css'
@@ -49,14 +49,14 @@
         {% endblock body %}
         {% block javascripts %}
             <!--[if lt IE 9]>
-            {% javascripts output='js/ilmb_iefix.js'
+            {% javascripts output='js/compiled/ilmb_iefix.js'
                 'bundles/infolaveragemetronic/core/js/respond.min.js'
                 'bundles/infolaveragemetronic/core/js/excanvas.min.js'
             %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
             <![endif]-->
-            {% javascripts output='js/ilmb_a.js'
+            {% javascripts output='js/compiled/ilmb_a.js'
                 'bundles/infolaveragemetronic/core/js/jquery-1.11.0.min.js'
                 'bundles/infolaveragemetronic/core/js/jquery-migrate-1.2.1.min.js'
                 'bundles/infolaveragemetronic/core/js/jquery-ui-1.10.3.custom.min.js'
