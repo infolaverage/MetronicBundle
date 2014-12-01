@@ -41,10 +41,6 @@ Components
     display: block;
 }
 
-.btn.default {
-    margin-bottom: 7px !important;
-}
-
 .portlet-social-icon {
     float: left;
     margin: 5px 5px 0 0;
