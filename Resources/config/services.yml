@@ -1,10 +1,12 @@
 parameters:
-    infolaverage.metronic.twig.form_theming_extension.theme_resource: 'InfoLaverageMetronicBundle:Form:fields.html.twig'
+    infolaverage.metronic.twig.form_theming_extension.form_theme_resource: 'InfoLaverageMetronicBundle:Form:form_theme.html.twig'
+    infolaverage.metronic.twig.form_theming_extension.table_filter_theme_resource: 'InfoLaverageMetronicBundle:Form:table_filter_theme.html.twig'
 
 services:
     infolaverage.metronic.twig.form_theming_extension:
         class: InfoLaverage\MetronicBundle\Twig\FormThemingExtension
         arguments:
-            - %infolaverage.metronic.twig.form_theming_extension.theme_resource%
+            - %infolaverage.metronic.twig.form_theming_extension.form_theme_resource%
+            - %infolaverage.metronic.twig.form_theming_extension.table_filter_theme_resource%
         tags:
-                    - { name: twig.extension }
+            - { name: twig.extension }

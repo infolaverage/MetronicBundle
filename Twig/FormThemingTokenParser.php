@@ -49,6 +49,6 @@ class FormThemingTokenParser extends \Twig_TokenParser
      */
     public function getTag()
     {
-        return 'il_metronic_theme';
+        return 'il_metronic_theme_form';
     }
 }

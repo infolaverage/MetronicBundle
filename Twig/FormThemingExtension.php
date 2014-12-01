@@ -14,14 +14,21 @@ class FormThemingExtension extends \Twig_Extension
     /**
      * @var string
      */
-    protected $resource;
+    protected $formTheme;
 
     /**
-     * @param string $resource
+     * @var string
      */
-    public function __construct($resource)
+    protected $tableFilterTheme;
+
+    /**
+     * @param string $formTheme
+     * @param string $tableFilterTheme
+     */
+    public function __construct($formTheme, $tableFilterTheme)
     {
-        $this->resource = $resource;
+        $this->formTheme = $formTheme;
+        $this->tableFilterTheme = $tableFilterTheme;
     }
 
     /**
@@ -30,7 +37,8 @@ class FormThemingExtension extends \Twig_Extension
     public function getTokenParsers()
     {
         return [
-            new FormThemingTokenParser($this->resource),
+            new FormThemingTokenParser($this->formTheme),
+            new TableFilterThemingTokenParser($this->tableFilterTheme),
         ];
     }
 
