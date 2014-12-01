@@ -1,4 +1,4 @@
-/*********** 
+/***********
 Page Header
 ***********/
 /* Header search bar, toggler button & top menu */
@@ -56,7 +56,7 @@ Page Header
   background: #8a949e;
 }
 .page-header.navbar .menu-toggler {
-  background-image: url(../images/sidebar_toggler_icon_light.png);
+  /*background-image: url(../images/sidebar_toggler_icon_light.png);*/
 }
 
 /* Default Horizontal Menu */
@@ -455,8 +455,8 @@ Quick Sidebar Layout
   background: #9ea6af;
 }
 
-/*** 
-Quick Sidebar Toggler 
+/***
+Quick Sidebar Toggler
 ***/
 .page-quick-sidebar-toggler {
   background: #babfc6;
@@ -577,7 +577,7 @@ Quick Sidebar Content
 }
 
 /******
-Page Footer 
+Page Footer
 ******/
 .page-footer .page-footer-inner {
   color: #333333;
