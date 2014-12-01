@@ -12,7 +12,13 @@
 
     .table th.actions,
     .table td.actions {
+        width: 1px;
+        white-space: nowrap;
+    }
 
+    .table thead th.actions,
+    .table thead td.actions {
+        text-align: center;
     }
 
         .table th.actions .btn,
