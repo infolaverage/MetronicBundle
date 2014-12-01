@@ -1,1 +1,8 @@
-<div class="page-bar"></div>
+<div class="page-bar">
+    {% block breadcrumb %}
+        <ul class="page-breadcrumb"></ul>
+    {% endblock breadcrumb %}
+    {% block toolbar %}
+        <div class="page-toolbar"></div>
+    {% endblock toolbar %}
+</div>
