@@ -1,5 +1,10 @@
 .table {}
 
+    .table > thead > tr > th,
+    .table > tbody > tr > td {
+        vertical-align: middle;
+    }
+
     .table th.minw,
     .table td.minw {
         width: 1px;
