@@ -21,6 +21,8 @@
     .table th.actions ul,
     .table td.actions ul {
         margin: 0px;
+        padding: 0px;
+        list-style: none;
     }
 
         .table th.actions ul li,
@@ -32,11 +34,6 @@
         .table td.actions ul li:last-of-type {
             margin-bottom: 0px;
         }
-
-ul.unstyled {
-    list-style: none;
-    padding: 0;
-}
 
 .strong {
     font-weight: bold;
