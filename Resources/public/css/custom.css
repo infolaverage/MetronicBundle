@@ -1,38 +1,52 @@
-.table th.minw,
-.table td.minw {
-    width: 1px;
-}
+.table {}
 
-.table th.nowrap,
-.table td.nowrap {
-    white-space: nowrap;
-}
-
-.table th.actions,
-.table td.actions {
-
-}
-
-    .table th.actions .btn,
-    .table td.actions .btn {
-        margin: 0px;
+    .table th.minw,
+    .table td.minw {
+        width: 1px;
     }
 
-    .table th.actions ul,
-    .table td.actions ul {
-        margin: 0px;
-        padding: 0px;
-        list-style: none;
+    .table th.nowrap,
+    .table td.nowrap {
+        white-space: nowrap;
     }
 
-        .table th.actions ul li,
-        .table td.actions ul li {
-            margin: 0 0 5px 0;
+    .table th.actions,
+    .table td.actions {
+
+    }
+
+        .table th.actions .btn,
+        .table td.actions .btn {
+            margin: 0px;
         }
 
-        .table th.actions ul li:last-of-type,
-        .table td.actions ul li:last-of-type {
-            margin-bottom: 0px;
+        .table th.actions ul,
+        .table td.actions ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+            .table th.actions ul li,
+            .table td.actions ul li {
+                margin: 0 0 5px 0;
+            }
+
+            .table th.actions ul li:last-of-type,
+            .table td.actions ul li:last-of-type {
+                margin-bottom: 0px;
+            }
+
+    .table thead tr.filter {}
+
+        .table thead tr.filter th {
+            vertical-align: middle;
+        }
+
+        .table thead tr.filter th.actions {
+            text-align: center;
+            width: 1px;
+            white-space: nowrap;
         }
 
 .strong {
