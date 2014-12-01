@@ -1,0 +1,170 @@
+.table th.minw,
+.table td.minw {
+    width: 1px;
+}
+
+.table th.nowrap,
+.table td.nowrap {
+    white-space: nowrap;
+}
+
+.table th.actions,
+.table td.actions {
+
+}
+
+    .table th.actions .btn,
+    .table td.actions .btn {
+        margin: 0px;
+    }
+
+    .table th.actions ul,
+    .table td.actions ul {
+        margin: 0px;
+    }
+
+        .table th.actions ul li,
+        .table td.actions ul li {
+            margin: 0 0 5px 0;
+        }
+
+        .table th.actions ul li:last-of-type,
+        .table td.actions ul li:last-of-type {
+            margin-bottom: 0px;
+        }
+
+ul.unstyled {
+    list-style: none;
+    padding: 0;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.table > thead > tr > th.text-middle,
+.table > tbody > tr > td.text-middle {
+    vertical-align: middle;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.add-top-margin-0 {
+    margin-top: 0px;
+}
+
+.add-top-margin-5 {
+    margin-top: 5px;
+}
+
+.add-top-margin-10 {
+    margin-top: 10px;
+}
+
+.add-top-margin-15 {
+    margin-top: 15px;
+}
+
+.add-top-margin-20 {
+    margin-top: 20px;
+}
+
+.add-top-margin-25 {
+    margin-top: 25px;
+}
+
+.add-top-margin-30 {
+    margin-top: 30px;
+}
+
+.add-bottom-margin-0 {
+    margin-bottom: 0px;
+}
+
+.add-bottom-margin-5 {
+    margin-bottom: 5px;
+}
+
+.add-bottom-margin-10 {
+    margin-bottom: 10px;
+}
+
+.add-bottom-margin-15 {
+    margin-bottom: 15px;
+}
+
+.add-bottom-margin-20 {
+    margin-bottom: 20px;
+}
+
+.add-bottom-margin-25 {
+    margin-bottom: 25px;
+}
+
+.add-bottom-margin-30 {
+    margin-bottom: 30px;
+}
+
+.add-left-margin-0 {
+    margin-left: 0px;
+}
+
+.add-left-margin-5 {
+    margin-left: 5px;
+}
+
+.add-left-margin-10 {
+    margin-left: 10px;
+}
+
+.add-left-margin-15 {
+    margin-left: 15px;
+}
+
+.add-left-margin-20 {
+    margin-left: 20px;
+}
+
+.add-left-margin-25 {
+    margin-left: 25px;
+}
+
+.add-left-margin-30 {
+    margin-left: 30px;
+}
+
+.add-right-margin-0 {
+    margin-right: 0px;
+}
+
+.add-right-margin-5 {
+    margin-right: 5px;
+}
+
+.add-right-margin-10 {
+    margin-right: 10px;
+}
+
+.add-right-margin-15 {
+    margin-right: 15px;
+}
+
+.add-right-margin-20 {
+    margin-right: 20px;
+}
+
+.add-right-margin-25 {
+    margin-right: 25px;
+}
+
+.add-right-margin-30 {
+    margin-right: 30px;
+}
+
+.page-toolbar {}
+
+    .page-toolbar .btn > i {
+        font-size: initial;
+    }
