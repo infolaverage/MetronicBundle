@@ -190,3 +190,9 @@
     .page-toolbar .btn > i {
         font-size: initial;
     }
+
+form.form-horizontal {}
+
+    form.form-horizontal .form-actions {
+        padding-bottom: 0px;
+    }
