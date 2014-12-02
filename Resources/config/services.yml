@@ -1,6 +1,7 @@
 parameters:
     infolaverage.metronic.twig.form_theming_extension.form_theme_resource: 'InfoLaverageMetronicBundle:Form:form_theme.html.twig'
     infolaverage.metronic.twig.form_theming_extension.table_filter_theme_resource: 'InfoLaverageMetronicBundle:Form:table_filter_theme.html.twig'
+    infolaverage.metronic.form.type.form_actions.default_button_class: 'btn default'
 
 services:
     infolaverage.metronic.twig.form_theming_extension:
@@ -10,3 +11,15 @@ services:
             - %infolaverage.metronic.twig.form_theming_extension.table_filter_theme_resource%
         tags:
             - { name: twig.extension }
+
+    infolaverage.metronic.form.type.form_actions:
+        class: InfoLaverage\MetronicBundle\Form\Type\FormActionsType
+        arguments:
+            - %infolaverage.metronic.form.type.form_actions.default_button_class%
+        tags:
+            - { name: form.type, alias: il_metronic_form_actions_type }
+
+    infolaverage.metronic.form.type.button_link:
+            class: InfoLaverage\MetronicBundle\Form\Type\ButtonLinkType
+            tags:
+                - { name: form.type, alias: il_metronic_button_link_type }

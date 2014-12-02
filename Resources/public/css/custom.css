@@ -194,5 +194,11 @@
 form.form-horizontal {}
 
     form.form-horizontal .form-actions {
-        padding-bottom: 0px;
+        padding-bottom: 5px;
     }
+
+        form.form-horizontal .form-actions .buttons-container {}
+
+            form.form-horizontal .form-actions .buttons-container .btn {
+                margin-right: 10px;
+            }

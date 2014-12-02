@@ -1,28 +1,14 @@
-{% block role_widget %}
-    {% spaceless %}
-        {% if expanded %}
-            <ul {{ block('widget_container_attributes') }}>
-                {% for child in form %}
-                    <li>
-                        {{ form_widget(child) }}
-                        {{ form_label(child) }}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            {{ block('choice_widget') }}
+{% block form -%}
+    {% set form_actions = form.actions|default(false) ? form_widget(form.actions) : false %}
+    {{ form_start(form) }}
+        <div class="form-body">
+            {{ form_widget(form) }}
+        </div>
+        {% if form_actions %}
+            {{ form_actions|raw }}
         {% endif %}
-    {% endspaceless %}
-{% endblock %}
-
-{% block choice_widget_expanded -%}
-    <div {{ block('widget_container_attributes') }}>
-        {%- for child in form %}
-            {{- form_widget(child) -}}
-            {{- form_label(child) -}}
-        {% endfor -%}
-    </div>
-{% endblock choice_widget_expanded %}
+    {{ form_end(form) }}
+{%- endblock form %}
 
 {% block form_start -%}
     {% set method = method|upper %}
@@ -85,57 +71,12 @@
     {%- endfor -%}
 {%- endblock widget_attributes %}
 
-{% block form_widget_simple -%}
-    {% set type = type|default('text') -%}
-    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
-{%- endblock form_widget_simple %}
-
-{% block submit_widget -%}
-    {% set type = type|default('submit') %}
-    {% if 'login' not in full_name %}
-        <div class="form-actions">
-            <div class="row">
-                <div class="col-md-offset-4 col-md-8">
-                    {{- block('button_widget') -}}
-                </div>
-            </div>
-        </div>
-    {% else %}
-        {{- block('button_widget') -}}
-    {% endif %}
-{%- endblock submit_widget %}
-
 {% block button_widget -%}
     {% if label is empty -%}
         {% set label = name|humanize %}
     {%- endif -%}
     <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>{{ label|trans({}, translation_domain)|raw }}</button>
 {%- endblock button_widget %}
-
-{% block button_attributes -%}
-    id="{{ id }}" name="{{ full_name }}"{% if disabled %} disabled="disabled"{% endif -%}
-    {%- if 'class' not in attr|keys -%}
-        {% if 'delete' in full_name %}class="btn color-delete"{% else %}class="btn green"{% endif %}
-    {%- endif -%}
-    {%- for attrname, attrvalue in attr -%}
-        {{- " " -}}
-        {%- if attrname in ['placeholder', 'title'] -%}
-            {{- attrname }}="{{ attrvalue|trans({}, translation_domain) }}"
-        {%- elseif attrvalue is sameas(true) -%}
-            {{- attrname }}="{{ attrname }}"
-        {%- elseif attrvalue is not sameas(false) -%}
-            {{- attrname }}="{{ attrvalue }}"
-        {%- endif -%}
-    {%- endfor -%}
-{%- endblock button_attributes %}
-
-{% block form -%}
-    {{ form_start(form) }}
-    <div class="form-body">
-        {{- form_widget(form) -}}
-    </div>
-    {{ form_end(form) }}
-{%- endblock form %}
 
 {% block choice_widget -%}
     {% if expanded %}
@@ -169,3 +110,38 @@
         </label>
     {% endspaceless %}
 {% endblock radio_widget %}
+
+{% block role_widget %}
+    {% spaceless %}
+        {% if expanded %}
+            <ul {{ block('widget_container_attributes') }}>
+                {% for child in form %}
+                    <li>
+                        {{ form_widget(child) }}
+                        {{ form_label(child) }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            {{ block('choice_widget') }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock role_widget %}
+
+{% block il_metronic_form_actions_type_widget %}
+    {% spaceless %}
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-4 col-md-8 buttons-container">
+                    {% for button in form %}
+                        {{ form_widget(button) }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock il_metronic_form_actions_type_widget %}
+
+{% block il_metronic_button_link_type_widget %}
+    <a href="{{ form.vars.url }}" {{ block('button_attributes') }}>{{ label|default(name)|trans({}, translation_domain)|raw }}</a>
+{% endblock il_metronic_button_link_type_widget %}
