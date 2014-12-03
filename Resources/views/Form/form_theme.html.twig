@@ -28,7 +28,8 @@
 {%- endblock form_start %}
 
 {% block form_row -%}
-    <div class="form-group">
+    {% set error_class = form.vars.errors|length ? 'has-error' : null %}
+    <div class="form-group {{ error_class }}">
         {{ form_label(form) }}
         <div class="col-md-8">
             {{ form_widget(form) }}
@@ -52,6 +53,16 @@
         >{{ label|trans({}, translation_domain) }}</label>
     {%- endif %}
 {%- endblock form_label %}
+
+{% block form_errors -%}
+    {% if errors|length > 0 -%}
+        <ul class="list-unstyled">
+            {%- for error in errors -%}
+                <li>{{ error.message }}</li>
+            {%- endfor -%}
+        </ul>
+    {%- endif %}
+{%- endblock form_errors %}
 
 {% block widget_attributes -%}
     id="{{ id }}" name="{{ full_name }}"
