@@ -31,14 +31,6 @@ class ButtonLinkType extends AbstractType
     /**
      * @return string
      */
-    public function getParent()
-    {
-        return 'button';
-    }
-
-    /**
-     * @return string
-     */
     public function getName()
     {
         return 'il_metronic_button_link_type';
