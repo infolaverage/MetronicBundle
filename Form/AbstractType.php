@@ -19,7 +19,15 @@ abstract class AbstractType extends BaseType
     {
         // handle form actions settings
         $actionsOptions = $this->resolveActionsOptions($options);
-        $builder->add('actions', 'il_metronic_form_actions_type', $actionsOptions);
+        if (isset($actionsOptions['buttons'])
+            && count($actionsOptions['buttons']) > 0
+        ) {
+            $builder->add(
+                'actions',
+                'il_metronic_form_actions_type',
+                $actionsOptions
+            );
+        }
     }
 
     /**
