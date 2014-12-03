@@ -1,3 +1,5 @@
+{% extends "form_div_layout.html.twig" %}
+
 {% block form -%}
     {% set form_actions = form.actions|default(false) ? form_widget(form.actions) : false %}
     {{ form_start(form) }}
@@ -11,20 +13,10 @@
 {%- endblock form %}
 
 {% block form_start -%}
-    {% set method = method|upper %}
-    {%- if method in ["GET", "POST"] -%}
-        {% set form_method = method %}
-    {%- else -%}
-        {% set form_method = "POST" %}
-    {%- endif -%}
-    <form name="{{ form.vars.name }}" method="{{ form_method|lower }}" action="{{ action }}"
-    {%- if attr is not empty %}
-        {% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}
-    {%- else %} class="form-horizontal"{% endif %}
-    {%- if multipart %} enctype="multipart/form-data"{% endif %}>
-    {%- if form_method != method -%}
-        <input type="hidden" name="_method" value="{{ method }}" />
-    {%- endif -%}
+    {% if not attr.class|default(false) %}
+        {% set attr = attr|merge({'class': 'form-horizontal'}) %}
+    {% endif %}
+    {{ parent() }}
 {%- endblock form_start %}
 
 {% block form_row -%}
