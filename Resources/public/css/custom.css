@@ -87,6 +87,10 @@
     font-weight: bold;
 }
 
+.not-strong {
+    font-weight: normal !important;
+}
+
 .table > thead > tr > th.text-middle,
 .table > tbody > tr > td.text-middle {
     vertical-align: middle;
@@ -109,6 +113,24 @@ form.form-horizontal {}
             form.form-horizontal .form-actions .buttons-container .btn {
                 margin-right: 10px;
             }
+
+.vertical-separator
+{
+    display: inline-block;
+    margin: 0 5px;
+}
+
+    .vertical-separator.smaller
+    {
+        display: inline-block;
+        margin: 0 3px;
+    }
+
+    .vertical-separator.bigger
+    {
+        display: inline-block;
+        margin: 0 10px;
+    }
 
 .text-top {
     vertical-align: top;
