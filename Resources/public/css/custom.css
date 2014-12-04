@@ -68,6 +68,15 @@
             white-space: nowrap;
         }
 
+            .table thead tr.filter th.actions .btn-group {
+                min-width: 70px;
+            }
+
+            .table thead tr.filter th.actions .btn {
+                padding: 8px 0;
+                width: 35px;
+            }
+
 .strong {
     font-weight: bold;
 }
