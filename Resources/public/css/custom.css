@@ -21,6 +21,14 @@
         white-space: nowrap;
     }
 
+    .table tbody td.actions {
+        opacity: 0.1;
+    }
+
+        .table tbody tr:hover td.actions {
+            opacity: 1;
+        }
+
     .table thead th.actions,
     .table thead td.actions {
         text-align: center;
