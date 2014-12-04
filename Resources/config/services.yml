@@ -20,6 +20,11 @@ services:
             - { name: form.type, alias: il_metronic_form_actions_type }
 
     infolaverage.metronic.form.type.button_link:
-            class: InfoLaverage\MetronicBundle\Form\Type\ButtonLinkType
-            tags:
-                - { name: form.type, alias: il_metronic_button_link_type }
+        class: InfoLaverage\MetronicBundle\Form\Type\ButtonLinkType
+        tags:
+            - { name: form.type, alias: il_metronic_button_link_type }
+
+    nfolaverage.metronic.twig.link_confirm_extension:
+        class: InfoLaverage\MetronicBundle\Twig\LinkConfirmationExtension
+        tags:
+            - { name: twig.extension }
