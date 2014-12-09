@@ -351,3 +351,15 @@ form.form-horizontal {}
 .font-size-30 {
     font-size: 30px !important;
 }
+
+.branding-color.fa-facebook-square {
+    color: #3b5998;
+}
+
+.branding-color.fa-twitter-square {
+    color: #55acee;
+}
+
+.branding-color.fa-google-plus-square {
+    color: #dd4b39;
+}
