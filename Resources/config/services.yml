@@ -24,7 +24,7 @@ services:
         tags:
             - { name: form.type, alias: il_metronic_button_link_type }
 
-    nfolaverage.metronic.twig.link_confirm_extension:
+    infolaverage.metronic.twig.link_confirm_extension:
         class: InfoLaverage\MetronicBundle\Twig\LinkConfirmationExtension
         tags:
             - { name: twig.extension }
