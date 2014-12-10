@@ -11,11 +11,9 @@
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         {% block stylesheets %}
             {% stylesheets filter='cssrewrite' output='css/compiled/ilmb_a.css'
-                'bundles/infolaveragemetronic/core/css/font-awesome.min.css'
-                'bundles/infolaveragemetronic/core/css/simple-line-icons.min.css'
-                'bundles/infolaveragemetronic/core/css/bootstrap.min.css'
-                'bundles/infolaveragemetronic/core/css/uniform.default.min.css'
-                'bundles/infolaveragemetronic/core/css/bootstrap-switch.min.css'
+                'bundles/infolaveragemetronic/core/plugins/font-awesome/css/font-awesome.css'
+                'bundles/infolaveragemetronic/core/plugins/bootstrap/css/bootstrap.css'
+                'bundles/infolaveragemetronic/core/plugins/uniform/css/uniform.default.css'
                 'bundles/infolaveragemetronic/core/css/toastr.min.css'
                 'bundles/infolaveragemetronic/core/css/components.css'
                 'bundles/infolaveragemetronic/core/css/plugins.css'
@@ -30,7 +28,9 @@
             {% block additional_stylesheets %}{% endblock %}
         {% endblock stylesheets %}
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" href="{{ asset('bundles/infolaveragemetronic/core/images/favicon.ico') }}"/>
+        {% block favicon %}
+            <link rel="shortcut icon" href="{{ asset('bundles/infolaveragemetronic/core/images/favicon.ico') }}"/>
+        {% endblock favicon %}
     </head>
     <body class="{% block body_class %}{{ additional_body_class|default(null) }} page-header-fixed page-quick-sidebar-over-content{% endblock body_class %}">
         {% block body %}
@@ -59,16 +59,11 @@
             {% endjavascripts %}
             <![endif]-->
             {% javascripts output='js/compiled/ilmb_a.js'
-                'bundles/infolaveragemetronic/core/js/jquery-1.11.0.min.js'
-                'bundles/infolaveragemetronic/core/js/jquery-migrate-1.2.1.min.js'
-                'bundles/infolaveragemetronic/core/js/jquery-ui-1.10.3.custom.min.js'
-                'bundles/infolaveragemetronic/core/js/bootstrap.min.js'
-                'bundles/infolaveragemetronic/core/js/bootstrap-hover-dropdown.min.js'
-                'bundles/infolaveragemetronic/core/js/jquery.slimscroll.min.js'
-                'bundles/infolaveragemetronic/core/js/jquery.blockui.min.js'
-                'bundles/infolaveragemetronic/core/js/jquery.cokie.min.js'
-                'bundles/infolaveragemetronic/core/js/jquery.uniform.min.js'
-                'bundles/infolaveragemetronic/core/js/bootstrap-switch.min.js'
+                'bundles/infolaveragemetronic/core/plugins/jquery-1.11.0.min.js'
+                'bundles/infolaveragemetronic/core/plugins/jquery-migrate-1.2.1.min.js'
+                'bundles/infolaveragemetronic/core/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js'
+                'bundles/infolaveragemetronic/core/plugins/bootstrap/js/bootstrap.js'
+                'bundles/infolaveragemetronic/core/plugins/uniform/jquery.uniform.js'
                 'bundles/infolaveragemetronic/core/js/metronic.js'
                 'bundles/infolaveragemetronic/core/js/layout.js'
                 'bundles/infolaveragemetronic/js/confirm.js'
