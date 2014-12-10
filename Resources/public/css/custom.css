@@ -260,6 +260,106 @@ form.form-horizontal {}
     margin-right: 30px !important;
 }
 
+.no-padding {
+    padding: 0px !important;
+}
+
+.add-top-padding-0 {
+    padding-top: 0px !important;
+}
+
+.add-top-padding-1 {
+    padding-top: 1px !important;
+}
+
+.add-top-padding-2 {
+    padding-top: 2px !important;
+}
+
+.add-top-padding-3 {
+    padding-top: 3px !important;
+}
+
+.add-top-padding-4 {
+    padding-top: 4px !important;
+}
+
+.add-top-padding-5 {
+    padding-top: 5px !important;
+}
+
+.add-bottom-padding-0 {
+    padding-bottom: 0px !important;
+}
+
+.add-bottom-padding-1 {
+    padding-bottom: 1px !important;
+}
+
+.add-bottom-padding-2 {
+    padding-bottom: 2px !important;
+}
+
+.add-bottom-padding-3 {
+    padding-bottom: 3px !important;
+}
+
+.add-bottom-padding-4 {
+    padding-bottom: 4px !important;
+}
+
+.add-bottom-padding-5 {
+    padding-bottom: 5px !important;
+}
+
+.add-left-padding-0 {
+    padding-left: 0px !important;
+}
+
+.add-left-padding-1 {
+    padding-left: 1px !important;
+}
+
+.add-left-padding-2 {
+    padding-left: 2px !important;
+}
+
+.add-left-padding-3 {
+    padding-left: 3px !important;
+}
+
+.add-left-padding-4 {
+    padding-left: 4px !important;
+}
+
+.add-left-padding-5 {
+    padding-left: 5px !important;
+}
+
+.add-right-padding-0 {
+    padding-right: 0px !important;
+}
+
+.add-right-padding-1 {
+    padding-right: 1px !important;
+}
+
+.add-right-padding-2 {
+    padding-right: 2px !important;
+}
+
+.add-right-padding-3 {
+    padding-right: 3px !important;
+}
+
+.add-right-padding-4 {
+    padding-right: 4px !important;
+}
+
+.add-right-padding-5 {
+    padding-right: 5px !important;
+}
+
 .font-size-8 {
     font-size: 8px !important;
 }
