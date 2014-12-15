@@ -463,3 +463,7 @@ form.form-horizontal {}
 .branding-color.fa-google-plus-square {
     color: #dd4b39;
 }
+
+.no-wrap {
+    white-space: nowrap;
+}
