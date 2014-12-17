@@ -1,8 +1,10 @@
 <div class="page-content-wrapper">
     <div class="page-content">
-        <h1 class="page-title">
-            {% block page_title %}{% endblock %}
-        </h1>
+        {% block page_title_container %}
+            <h1 class="page-title">
+                {% block page_title %}{% endblock %}
+            </h1>
+        {% endblock page_title_container %}
         {% block page_bar %}
             {% include 'InfoLaverageMetronicBundle:partials:page_bar.html.twig' %}
         {% endblock page_bar %}
