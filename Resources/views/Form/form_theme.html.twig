@@ -61,7 +61,7 @@
     {%- if read_only %} readonly="readonly"{% endif -%}
     {%- if disabled %} disabled="disabled"{% endif -%}
     {%- if required %} required="required"{% endif -%}
-    {%- if 'class' not in attr|keys %}class="form-control" {%- endif -%}
+    {%- if 'class' not in attr|keys and type|default(null) not in ["checkbox"] %}class="form-control" {%- endif -%}
     {%- for attrname, attrvalue in attr -%}
         {{- " " -}}
         {%- if attrname in ['placeholder', 'title'] -%}
@@ -94,6 +94,7 @@
 {%- endblock choice_widget %}
 
 {% block checkbox_widget %}
+    {% set type = "checkbox" %}
     <label for="{{ id }}">
         <input
             type="checkbox"
