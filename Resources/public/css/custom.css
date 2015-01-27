@@ -467,3 +467,15 @@ form.form-horizontal {}
 .no-wrap {
     white-space: nowrap;
 }
+
+.form-horizontal .control-label.text-left {
+    text-align: left;
+}
+
+.form-horizontal .control-label.text-center {
+    text-align: center;
+}
+
+.form-horizontal .control-label.text-right {
+    text-align: right;
+}
