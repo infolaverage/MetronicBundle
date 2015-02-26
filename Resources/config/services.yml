@@ -24,6 +24,11 @@ services:
         tags:
             - { name: form.type, alias: il_metronic_button_link_type }
 
+    infolaverage.metronic.form.type.datetimepicker:
+        class: InfoLaverage\MetronicBundle\Form\Type\DateTimePickerType
+        tags:
+            - { name: form.type, alias: il_metronic_datetimepicker }
+
     infolaverage.metronic.twig.link_confirm_extension:
         class: InfoLaverage\MetronicBundle\Twig\LinkConfirmationExtension
         tags:

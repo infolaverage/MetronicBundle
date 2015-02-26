@@ -329,6 +329,18 @@ var Metronic = function() {
         }
     };
 
+    var handleBootstrapDateTimePickers = function() {
+        if ($().datetimepicker) {
+            $('.metronic-bootstrap-datetimepicker').each(function() {
+                var config = {};
+                if ($(this).data('config')) {
+                    config = $(this).data('config');
+                }
+                $(this).datetimepicker(config);
+            });
+        }
+    };
+
     //* END:CORE HANDLERS *//
 
     return {
@@ -355,6 +367,7 @@ var Metronic = function() {
             handlePopovers(); // handles bootstrap popovers
             handleAccordions(); //handles accordions
             handleModals(); // handle modals
+            handleBootstrapDateTimePickers();
 
             // Hacks
             handleFixInputPlaceholderForIE(); //IE8 & IE9 input placeholder issue fix
@@ -371,6 +384,7 @@ var Metronic = function() {
             handleUniform(); // hanfle custom radio & checkboxes
             handleBootstrapSwitch(); // handle bootstrap switch plugin
             handleDropdownHover(); // handles dropdown hover
+            handleBootstrapDateTimePickers();
         },
 
         //public function to remember last opened popover that needs to be closed on click
