@@ -4,11 +4,8 @@ namespace InfoLaverage\MetronicBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
-/**
- * Class FormActionsType
- */
 class FormActionsType extends AbstractType
 {
     /**
@@ -25,8 +22,7 @@ class FormActionsType extends AbstractType
     }
 
     /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -52,41 +48,35 @@ class FormActionsType extends AbstractType
     }
 
     /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolverInterface $resolver
+     * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver
             ->setRequired(['buttons'])
-            ->setAllowedTypes(
-                [
-                    'buttons' => 'array',
-                ]
-            )
+            ->setAllowedTypes('buttons', 'array')
             ->setAllowedValues(
-                [
-                    'buttons' => \Closure::bind(
-                        function ($value) {
-                            return $this->validateButtonsValue($value);
-                        },
-                        $this
-                    ),
-                ]
+                'buttons',
+                \Closure::bind(
+                    function ($value) {
+                        return $this->validateButtonsValue($value);
+                    },
+                    $this
+                )
             )
-            ->setNormalizers(
-                [
-                    'buttons' => \Closure::bind(
-                        function ($options, $value) {
-                            return $this->normalizeButtonsValue($options, $value);
-                        },
-                        $this
-                    ),
-                ]
+            ->setNormalizer(
+                'buttons',
+                \Closure::bind(
+                    function ($options, $value) {
+                        return $this->normalizeButtonsValue($options, $value);
+                    },
+                    $this
+                )
             );
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {

@@ -12,6 +12,13 @@
             "email": "gabor.ottlik@infolaverage.hu"
         }
     ],
+    "require": {
+        "symfony/http-kernel": "~2.3|~3.0.0",
+        "symfony/dependency-injection": "~2.3|~3.0.0",
+        "symfony/form": "~2.7|~3.0.0",
+        "symfony/options-resolver": "~2.6|~3.0.0",
+        "symfony/validator": "~2.3|~3.0.0"
+    },
     "minimum-stability": "stable",
     "autoload": {
         "psr-4" : {
